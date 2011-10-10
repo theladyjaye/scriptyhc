@@ -56,6 +56,8 @@ $(CSS_FILES):
 	$(info [Compiling] $(PROJECT_DIR)/$(CSS_OUT)/$(call cssforscss, $@))
 	@sass --style compressed $@ $(PROJECT_DIR)/$(CSS_OUT)/$(call cssforscss, $@)
 
+%.css: $(PROJECT_DIR)/$(CSS_SRC)/%.scss
+
 css-watch: 
 	@sass --style extended --watch $(PROJECT_DIR)/$(CSS_SRC):$(PROJECT_DIR)/$(CSS_OUT)
 
@@ -106,6 +108,7 @@ $$(shell cp $(1) $$(TMP_DIR)/$(1))
 endef
 
 cssforscss = $(basename $(notdir $(1))).css
+scssforcss = $(basename $(notdir $(1))).scss
 
 .PHONY: new
 .PHONY: newdirs
