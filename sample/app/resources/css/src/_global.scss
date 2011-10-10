@@ -1,0 +1,502 @@
+@import "helper";
+@import "variables";
+@import "mixins";
+@import "fonts";
+// TODO: Does expanding-content really need to be in global? 
+@import "expanding-content-bg";
+@import "faq";
+@import "ss-site-master";
+@import "chosen-base";
+@import "footer-chosen-overrides";
+
+/* DEV PROFILER STYLES */
+body{
+	.profiler-results.left{
+		//top:55px;
+		z-index:1002;
+	}
+	.profiler-queries-bg{
+		z-index:1000;
+	}
+}
+/* #eof DEV PROFILER STYLES */
+
+/* GLOBAL.SCSS */
+
+/* MoireBold elements */
+.news-header,
+#friends .view-stats,
+#friends .invite,
+#header-container h1,
+#nav-main a,
+#sidebar-nav,
+#modal-recent-tab,
+#modal-popular-tab,
+#social-container h2,
+#latest-header h1,
+#gallery #controls,
+#gears2 .btn,
+#content #error h1{
+	@extend .font-moireBold;
+}
+/* #eof WOFF FONT STYLES */
+
+/* GLOBAL RESETS AND MISC. STYLES */
+$min_width: 974px;
+$footer_height: 220px;
+
+video{
+	background-color:#000;
+}
+
+html, body {
+ 	height: 100%;
+}
+body {
+	font: 13px Arial, Helvetica, sans-serif; 
+	background-color: #000;
+}
+a{
+	color: #c00;
+	text-decoration: none;
+	&:focus	{
+		outline: 1px dotted #ccc;
+	}
+	&:hover	{
+		color: #fff;
+	}
+}
+li {
+	list-style: none;
+}
+.inner {
+	position:relative;
+	width: $min_width; 
+	margin: 0 auto;
+}
+#wrapper {
+	min-height: 100%;
+	
+	// temp for ie7 debug
+	// position:relative;
+	// top:350px;
+}
+#content-wrapper {
+	// position: absolute; 
+	width: 100%; 
+	min-width: $min_width; 
+	min-height: 1085px; 
+	overflow:hidden;
+}
+#background {
+	position: relative; 
+	margin: 0 auto; 
+	width: 100%; 
+	min-width: $min_width; 
+	height: 1082px; 
+	background-position: 50% 0; 
+	background-repeat: no-repeat;
+}
+/* #eof GLOBAL RESETS & MISC. STYLES */
+
+/* HELPER CLASSES */
+/* thumbnail border treatment */
+.thumb
+{
+	background-color: #494A4E;
+    border: 4px double #000;
+	height: 94px;
+	width: 172px;
+}
+/* #eof HELPER CLASSES */
+
+/* DEFAULT BG STYLES */
+#default{
+	#background	{
+		background-image:url("#{$images-root}#{$images-news}/news-main-bg.jpg");
+	}
+	#content{
+		position:relative;
+	}
+}
+/* #eof DEFAULT BG STYLES */
+
+/* TOP STYLES */
+#top {
+	background: url('../Images/global/tile-texture-grey.jpg'); 
+	width: 100%; 
+	height: 53px; 
+	position: relative;
+	z-index:999;
+}
+#latest-tweet-wrapper {
+	background: url('../Images/global/bg-twitter-bar.png') no-repeat; 
+	width: 735px; 
+	height: 29px; 
+	position: absolute; 
+	top: 10px; 
+	overflow:hidden;
+}
+#latest-tweet {
+	color: #ccc; 
+	margin-left: 38px; 
+	line-height: 30px; 
+	font-size:11px;
+}
+
+/* MESSAGING DRAWER STYLES */
+@import "global-msg-drawer";
+/* #eof MESSAGING DRAWER STYLES */
+/* #eof TOP STYLES */
+
+/* NAV MAIN STYLES */
+#nav-main {
+	background: url('../Images/global/nav-main/bg-nav-main.png') no-repeat; 
+	width: 974px; 
+	height: 130px; 
+	position: relative;
+}
+#logo {
+	position: absolute; 
+	top: 1px; 
+	left: 23px
+}
+#nav-secondary {
+	position: absolute; 
+	left: 130px; 
+	top: 8px;
+	& li {
+		float: left;
+	}
+	& a {
+		display: block; 
+		line-height: 24px; 
+		text-align: center; 
+		color: #b6bdbf; 
+		font-size: 9px; 
+		margin-right: 1px; 
+		text-transform: uppercase;
+	}
+	#nav-secondary-forums {
+		background: url('../Images/global/nav-main/bg-forums.png') no-repeat; 
+		width: 76px; 
+		height: 24px;
+		&:hover {
+			background-position: 0 -24px;
+		}
+	}
+	#nav-secondary-faq {
+		background: url('../Images/global/nav-main/bg-faq.png') no-repeat; 
+		width: 57px; 
+		height: 24px;
+		&:hover {
+			background-position: 0 -24px;
+		}
+	}
+	#nav-secondary-epic {
+		background: url('../Images/global/nav-main/bg-epic.png') no-repeat; 
+		width: 124px; 
+		height: 24px;
+		&:hover {
+			background-position: 0 -24px;
+		}
+	}
+	#nav-secondary-bte{
+		background: url('../Images/global/nav-main/bg-bte.png') no-repeat; 
+        width: 151px; 
+        height: 24px;
+		&:hover {
+            background-position: 0 -24px;
+        }
+    }
+}
+#nav-primary {
+	position: absolute; left: 290px; top: 43px;
+	& li {
+		float: left; 
+		display: block;
+	}
+	& a {
+		float: left; 
+		display: block; 
+		font-size: 13px; 
+		font-weight: bold; 
+		color: #fff; 
+		text-transform: uppercase; 
+		line-height: 85px; 
+		text-indent: 14px;
+		& span {
+			background: url('../Images/global/arrow-small-right-red.png') no-repeat 0 2px; 
+			width: 7px; 
+			height: 11px; 
+			padding-left: 15px;
+		}
+	}
+}
+#nav-primary-news {
+	background: url('../Images/global/nav-main/bg-news.jpg') no-repeat; 
+	width: 169px; 
+	height: 72px;
+	&:hover {
+		background-position: 0 -72px;
+	}
+	&.current {
+		background-position: 0 -144px;
+	}
+}
+#nav-primary-about {
+	background: url('../Images/global/nav-main/bg-about.jpg') no-repeat; 
+	width: 170px; 
+	height: 72px;
+	&:hover {
+		background-position: 0 -72px;
+	}
+	&.current {
+		background-position: 0 -144px;
+	}
+}
+#nav-primary-warjournal {
+	background: url('../Images/global/nav-main/bg-warjournal.jpg') no-repeat; 
+	width: 172px; 
+	height: 72px;
+	&:hover {
+		background-position: 0 -72px;
+	}
+	&.current {
+		background-position: 0 -144px;
+	}
+}
+#nav-primary-preorder {
+	background: url('../Images/global/nav-main/bg-preorder.png') no-repeat; width: 166px; height: 72px;
+	&:hover {
+		background-position: 0 -72px;
+	}
+}
+/* #eof NAV MAIN STYLES */
+
+/* FOOTER STYLES */
+#footer {
+	float: left; 
+	clear: both; 
+	position: relative; 
+	margin-top: 30px; 
+	width: 100%; 
+	min-width: $min_width; 
+	height: $footer_height;
+	
+	#footer-background { 
+		position: relative; 
+		margin: 0 auto; 
+		width: 100%; 
+		min-width: $min_width; 
+		height: 220px; 
+		background: url('../Images/global/footer/bg.jpg') no-repeat 50% 0
+	}	
+	& .inner {
+		position: relative; 
+		top: 35px
+	}
+	.footer-content {
+		font-size: 13px; 
+		float: left; 
+		width: 972px;
+		
+		#lang-form{
+			margin:3px 10px 0 0;
+			float:left;
+		}
+		& .copyright 
+		{
+			color: #999; 
+			text-transform: uppercase; 
+			float: left; 
+			margin-bottom: 4px;
+			*width:700px;
+		}
+		& .footer-links{
+			*width:740px;
+		}
+		& ul {
+			margin-top:-4px;
+			float:left;
+		}
+		& li {
+			color: #333; 
+			float: left;
+			& span 	{
+				float: left; 
+				margin: 0 5px;
+			}
+			& a {
+				float: left;
+			}
+		}
+		& a {
+			color: #900;
+			&:hover {
+				color: #fff;
+			}
+			&:visited {
+				color: $link-visited;
+			}
+		}
+		& .footer-logos {
+			clear:both;
+			float: left; 
+			margin-top: 20px;
+			*width:840px;
+			
+			& li {
+				margin-right: 27px; 
+				float: left
+			}
+			& .footer-install-silverlight {
+				width: 240px; 
+				color: #707070; 
+				font-size: 12px; 
+				line-height: 16px; 
+				margin-top: 2px;
+				& a	{
+					float: none;
+					&:visited {color: $link-visited;}
+				}
+			}
+		}
+	}
+	& .esrb-rating {
+		display:block;
+		position:absolute;
+		top:0px;
+		right:0px;
+		max-width:180px;
+		img{
+			max-width:100%;
+		}
+	}
+}
+/* #eof FOOTER STYLES */
+
+/* MODAL WINDOW STYLES */
+/* Used by FAQ and Tags modals, as well as their standalone default pages */
+.modal.default{
+	margin-top: 13px;
+
+	#close-btn{
+		display: none;
+	}
+}
+.modal{
+	@include corner(10px);
+	margin: 0 auto; /* 168px */
+	background-image: url("#{$images-root}/Faq/faq-bg-tile-600.jpg");
+	background-color:#242728;
+	padding: 20px 28px 25px 30px;
+	width: 756px; /* 814-28-30 */
+		
+	#header-container{
+		background: url("#{$images-root}/global-sprite.jpg") no-repeat 0 0;
+		min-height: 49px;
+		margin-left: 0; /* need? */
+		width: 773px; /* 773-36 */
+
+		& div, & h1	{
+			float:left;
+		}
+		& h1{
+			color: #fff;
+			font-size: 20px;
+			font-weight:bold;
+			text-transform:uppercase;
+			margin-top:8px;
+			padding-left: 49px;
+			width: 650px;
+
+			& span{
+				color: #999;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 21px;
+				font-weight: normal;
+			}
+		}
+		#close-btn{
+			@include corner(5px);
+			background:url("#{$images-root}/global-sprite.jpg") no-repeat -774px 0;
+			cursor:pointer;
+			float:right;
+			height:36px;
+			margin: 3px 7px 0 0;
+			width:36px;
+		}
+	}
+	#main-container{
+		width: 724px;
+		margin: 0 auto;
+	}
+}
+
+/* Used by Tags modal */
+#sub-content.modal{
+	#header-container{
+		position: relative;
+
+		ul{
+			position: absolute;
+			top: 0;
+			left: 559px;
+			width: 166px;
+		}
+		li{
+			float: left;
+			border-left: 1px solid #000;
+			width: 82px;
+			height: 42px;
+
+			a{
+				display: block;
+				font-size: 10px;
+				color: #fff;
+				padding: 14px 2px 0 17px;
+				width: 64px; /* 83-19 */
+				height: 28px; /* 42-14 */
+
+				&:hover, 
+				&.selected{
+					background: url("#{$images-root}/global-sprite.jpg") no-repeat -812px 0;
+				}
+				&.selected{
+					cursor: default;
+				}
+			}
+
+			#modal-recent-tab{
+				padding-left: 20px;
+				width: 62px;
+
+				&:hover, &.selected{
+					background-position: -811px 0;
+				}
+			}
+		}
+	}
+	#content-box{
+		height: 665px;
+		margin-top: 25px;
+		overflow: auto;
+		width: 770px;
+
+		ul#latest-content li{
+			width: 730px;
+
+			& .latest-item-content{
+				width: 525px;
+			}
+		}
+
+		#pagination-container,
+		.pagination-container{
+			display: none;
+		}
+	}
+}
+/* #eof MODAL WINDOW STYLES */
+/* #eof GLOBAL.SCSS */
