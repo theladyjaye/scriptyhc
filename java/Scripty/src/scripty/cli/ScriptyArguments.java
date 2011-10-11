@@ -26,12 +26,15 @@ public class ScriptyArguments
     private String htmlSourcePrefix = ".";
     private String javascriptSourcePrefix = ".";
     private String outputPrefix = ".";
+    private String compilerBasePath = ".";
     private String moduleOutputPath = "resources/js";
+    
     
     @Option(name="--minify", 
             usage="Sets JavaScript sources to be minified. Will create a new file with a .min.js extension in the same location as the target")
     public List<String> minify = new ArrayList<String>();
     
+            
     @Option(name="--html", 
             usage="Sets html sources" )
     public List<String> html = new ArrayList<String>();
@@ -54,6 +57,23 @@ public class ScriptyArguments
         }
         
         moduleOutputPath = value;
+    }
+    
+    @Option(name="--compiler_base_path", 
+            usage="Sets the path to the JavaScript compilers" )
+    public void setCompilerBasePath(String value)
+    {
+        if(value.endsWith("/"))
+        {
+            value = value.substring(0, value.length() - 1);
+        }
+        
+        compilerBasePath = value;
+    }
+    
+    public String getCompilerBasePath()
+    {
+        return compilerBasePath;
     }
     
     public String getModuleOutputPath()

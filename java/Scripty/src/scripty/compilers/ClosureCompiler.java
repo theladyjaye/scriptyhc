@@ -21,7 +21,6 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.IllegalStateException;
 import java.lang.RuntimeException;
-import scripty.compilers.ClosureRunner;
 import scripty.compilers.enums.CompilerAttribute;
 import scripty.sources.ScriptSource;
 
@@ -30,9 +29,10 @@ public class ClosureCompiler implements IScriptyCompiler
     private List<ScriptSource> scripts;
     private CompilerAttribute action;
     private String moduleName;
-    private String command = "java -jar compiler.jar";
     private String outputPrefix = ".";
+    private String compilerBasePath = ".";
     private String moduleOutputPath;
+    
     
     public ClosureCompiler()
     {
@@ -57,6 +57,12 @@ public class ClosureCompiler implements IScriptyCompiler
     {
         this.action = action;
     }
+    
+    @Override
+    public void setCompilerBasePath(String value)
+    {
+        compilerBasePath = value;
+    }
 
     @Override
     public void setModuleName(String name) 
@@ -64,6 +70,7 @@ public class ClosureCompiler implements IScriptyCompiler
         moduleName = name;
     }
     
+    @Override
     public void setModuleOutputPath(String value)
     {
         moduleOutputPath = value;
@@ -114,13 +121,10 @@ public class ClosureCompiler implements IScriptyCompiler
                 args.add(minifyName);
                 
                 
-                String[] compilerArgs = args.toArray(new String[args.size()]);
-                ClosureRunner runner = new ClosureRunner(compilerArgs, System.out, System.err);
-            
-                if (runner.shouldRunCompiler()) 
-                {
-                    runner.run();
-                }
+                IScriptyCompilerCommand command = new ClosureCompilerCommand();
+                command.setArguments(args);
+                command.setCompilerBasePath(compilerBasePath);
+                command.execute();
             }
         }
         catch(Exception e)
@@ -148,19 +152,15 @@ public class ClosureCompiler implements IScriptyCompiler
                 args.add(script.getPath());
             }
             
-
-            String[] compilerArgs = args.toArray(new String[args.size()]);
-            ClosureRunner runner = new ClosureRunner(compilerArgs, System.out, System.err);
+            IScriptyCompilerCommand command = new ClosureCompilerCommand();
+            command.setArguments(args);
+            command.setCompilerBasePath(compilerBasePath);
+            command.execute();
             
-            if (runner.shouldRunCompiler()) 
-            {
-                runner.run();
-            }
         }
         catch(Exception e)
         {
             System.out.println(e.getMessage());
         }
     }
-    
 }

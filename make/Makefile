@@ -84,7 +84,7 @@ dist-copy-js-libs:
 
 dist-compress-js:
 	$(info [Compressing JavaScript])
-	$(shell java -jar $(TOOLS_DIR)/scriptyhc.jar --output_prefix $(TMP_DIR) --js_output_module_path $(JS_SRC) --js_default_module_name $(JS_DEFAULT_MODULE_NAME) $(VIEW_FILES))
+	$(shell java -jar $(TOOLS_DIR)/scriptyhc.jar --compiler_base_path $(TOOLS_DIR)/compilers --output_prefix $(TMP_DIR) --js_output_module_path $(JS_SRC) --js_default_module_name $(JS_DEFAULT_MODULE_NAME) $(VIEW_FILES))
 
 installdirs:
 	$(info [Creating] Directories)

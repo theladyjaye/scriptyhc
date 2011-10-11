@@ -13,22 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package scripty.compilers;
 import java.util.List;
-import scripty.sources.ScriptSource;
-import scripty.compilers.enums.CompilerAttribute;
 
-
-public interface IScriptyCompiler 
+public interface IScriptyCompilerCommand 
 {
-    public void setAction(CompilerAttribute action);
-    public void setModuleName(String name);
-    public void setModuleOutputPath(String value);
-    public void setOutputPrefix(String value);
+    public void setArguments(List<String>value);
     public void setCompilerBasePath(String value);
-    public void addScript(ScriptSource script);
-    public void addScript(List<ScriptSource> script);
-    public void execute() throws IllegalStateException;
-    
+    public void execute();
 }

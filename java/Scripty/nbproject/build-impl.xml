@@ -727,7 +727,7 @@ is divided into following sections:
         <!-- You can override this target in the ../build.xml file. -->
        <jar update="true" destfile="${dist.jar}">
            <zipfileset src="${libraries.dir}/args4j-2.0.18.jar"/>
-           <zipfileset src="${libraries.dir}/closure.jar"/>
+           <zipfileset src="${libraries.dir}/commons-lang3-3.0.1.jar"/>
        </jar>
     </target>
     <target depends="init,compile,-pre-jar,-do-jar-with-manifest,-do-jar-without-manifest,-do-jar-with-mainclass,-do-jar-with-libraries,-post-jar" description="Build JAR." name="jar"/>

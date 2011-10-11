@@ -198,6 +198,7 @@ public class ScriptyRepository
             compiler = ScriptyCompilerFactory.compilerFromString(cliArguments.compiler);
             compiler.addScript(scripts);
             compiler.setAction(CompilerAttribute.MODULE);
+            compiler.setCompilerBasePath(cliArguments.getCompilerBasePath());
             compiler.setModuleName(key);
             compiler.setModuleOutputPath(cliArguments.getModuleOutputPath());
             compiler.setOutputPrefix(cliArguments.getOutputPrefix());
@@ -224,6 +225,7 @@ public class ScriptyRepository
             compiler = ScriptyCompilerFactory.compilerFromString(cliArguments.compiler);
             compiler.addScript(script);
             compiler.setAction(CompilerAttribute.MINIFY);
+            compiler.setCompilerBasePath(cliArguments.getCompilerBasePath());
             compiler.setOutputPrefix(cliArguments.getOutputPrefix());
             
             try 
